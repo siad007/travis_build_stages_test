@@ -9,10 +9,8 @@ jobs:
       script:
         - |
           if [[ $BCMATH != 'on' ]]; then
-              cat ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini;
-              cat ~/.phpenv/src/Makefile.in;
-              ls -la ~/.phpenv/versions/$(phpenv version-name)/conf.d;
-              ls -la ~/.phpenv/versions/$(phpenv version-name)/init.d;
+              ls -la ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d;
+              ls -la ~/.phpenv/versions/$(phpenv version-name)/etc/init.d;
           fi
           php -v;
           php -m;
