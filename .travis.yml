@@ -15,7 +15,9 @@ jobs:
               ./configure
               make clean
               make
+              cd ..
           fi
+          PATH="$PWD/php-7.2.19:$PWD/php-7.2.19/bin:$PATH"
           php -v;
           php -m;
     -
