@@ -13,7 +13,7 @@ jobs:
           fi
           php -v;
           php -m;
-          phpenv --help;
+          phpenv commands;
     -
       <<: *STANDARD_TEST_JOB
       php: 7.2
