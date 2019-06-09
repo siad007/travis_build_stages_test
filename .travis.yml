@@ -9,11 +9,15 @@ jobs:
       script:
         - |
           if [[ $BCMATH != 'on' ]]; then
-              sudo apt-get remove php7.2-bcmath;
+              wget https://www.php.net/distributions/php-7.2.19.tar.bz2 -O php-7.2.19.tar.bz2
+              tar -xvjf php-7.2.19.tar.bz2
+              cd php-7.2.19
+              ./configure
+              make clean
+              make
           fi
           php -v;
           php -m;
-          phpenv commands;
     -
       <<: *STANDARD_TEST_JOB
       php: 7.2
