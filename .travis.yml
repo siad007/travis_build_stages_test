@@ -11,7 +11,7 @@ jobs:
           if [[ $BCMATH != "on" ]]; then
               export PHP_BUILD_CONFIGURE_OPTS="--disable-bcmath";
               git clone git://github.com/php-build/php-build.git $HOME/.phpenv/plugins/php-build;
-              phpenv --debug install 7.2.19;
+              travis_wait phpenv install 7.2.19;
               phpenv rehash;
               phpenv global 7.2.19;
           fi
