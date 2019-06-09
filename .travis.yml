@@ -5,15 +5,11 @@ jobs:
     - &STANDARD_TEST_JOB
       stage: Test
       php: 7.2
-      env: BCMATH="on"
       before_install:
         - |
-          if [[ $BCMATH != "on" ]]; then
-              export PHP_BUILD_CONFIGURE_OPTS="--disable-bcmath"
-          fi
           php -v;
           php -m;
     -
       <<: *STANDARD_TEST_JOB
       php: 7.2
-      env: BCMATH="off"
+      env: PHP_BUILD_CONFIGURE_OPTS="--disable-bcmath"
