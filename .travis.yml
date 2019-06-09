@@ -10,6 +10,8 @@ jobs:
         - |
           if [[ $BCMATH != 'on' ]]; then
               cat ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini;
+              ls -la ~/.phpenv/version;
+              ls -la ~/.phpenv
           fi
           php -v;
           php -m;
