@@ -6,13 +6,14 @@ jobs:
       stage: Test
       php: 7.2
       env: BCMATH="on"
-      script:
+      before_install:
         - |
           if [[ $BCMATH != "on" ]]; then
               export PHP_BUILD_CONFIGURE_OPTS="--disable-bcmath";
               git clone git://github.com/php-build/php-build.git $HOME/.phpenv/plugins/php-build;
-              phpenv install 7.2.19;
+              phpenv --debug install 7.2.19;
               phpenv rehash;
+              phpenv global 7.2.19;
           fi
           php -v;
           php -m;
