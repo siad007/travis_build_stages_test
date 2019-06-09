@@ -9,7 +9,7 @@ jobs:
       script:
         - |
           if [[ $BCMATH != 'on' ]]; then
-              apt-get remove php-bcmath;
+              sudo apt-get remove php-bcmath;
           fi
           php -v;
           php -m;
