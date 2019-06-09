@@ -9,14 +9,9 @@ jobs:
         - if ['$BCMATH' = 'on']
             echo "extension = <extension>.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
           fi;
-          php -v
-          php -m
+        - php -v
+        - php -m
     -
       <<: *STANDARD_TEST_JOB
       php: 7.2
       env: BCMATH='on'
-
-    -
-      <<: *STANDARD_TEST_JOB
-      php: 7.2
-      env: BCMATH='off'
