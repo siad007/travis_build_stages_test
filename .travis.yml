@@ -13,6 +13,7 @@ jobs:
           fi
           php -v;
           php -m;
+          php-build --help;
     -
       <<: *STANDARD_TEST_JOB
       php: 7.2
