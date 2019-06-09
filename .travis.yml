@@ -9,8 +9,7 @@ jobs:
       script:
         - |
           if [[ $BCMATH != 'on' ]]; then
-              ls -la ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d;
-              ls -la ~/.phpenv/versions/$(phpenv version-name)/etc/init.d;
+              cat ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini;
           fi
           php -v;
           php -m;
