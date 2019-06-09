@@ -6,12 +6,10 @@ jobs:
       stage: Test
       php: 7.2
       script:
-        - if ['$BCMATH' = 'on']
-            echo "extension = <extension>.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-          fi;
+        - if [[ $BCMATH != 'on' ]]; then phpenv config-rm bcmath.ini || true; fi
         - php -v
         - php -m
     -
       <<: *STANDARD_TEST_JOB
       php: 7.2
-      env: BCMATH='on'
+      env: BCMATH='off'
