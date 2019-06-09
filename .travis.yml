@@ -9,9 +9,10 @@ jobs:
       script:
         - |
           if [[ $BCMATH != 'on' ]]; then
-              cat ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini;
-              ls -la ~/.phpenv/version;
-              ls -la ~/.phpenv
+              git clone https://github.com/php-build/php-build $(phpenv root)/plugins/php-build;
+              export PHP_BUILD_CONFIGURE_OPTS="--disable-bcmath"
+              phpenv install 7.2
+              phpenv rehash
           fi
           php -v;
           php -m;
