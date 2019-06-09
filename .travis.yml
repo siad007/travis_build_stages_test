@@ -9,15 +9,8 @@ jobs:
       script:
         - |
           if [[ $BCMATH != 'on' ]]; then
-              wget https://www.php.net/distributions/php-7.2.19.tar.bz2 -O php-7.2.19.tar.bz2
-              tar -xvjf php-7.2.19.tar.bz2
-              cd php-7.2.19
-              ./configure
-              make clean
-              make
-              cd ..
+              ls -la ~/.phpenv
           fi
-          PATH="$PWD/php-7.2.19:$PWD/php-7.2.19/bin:$PATH"
           php -v;
           php -m;
     -
