@@ -6,7 +6,7 @@ jobs:
       stage: Test
       php: 7.2
       script:
-        - if [[ $BCMATH != 'on' ]]; then phpenv config-rm bcmath.ini || true; fi
+        - if [[ $BCMATH != 'on' ]]; then sed -i 's/extension = bcmath.so/#extension = bcmath.so/g' ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
         - php -v
         - php -m
     -
