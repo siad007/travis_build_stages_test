@@ -1,23 +1,19 @@
-language: php
+language: c
 
-jobs:
-  include:
-    - &STANDARD_TEST_JOB
-      stage: Test
-      php: 7.2
-      env: BCMATH="on"
-      before_install:
-        - |
-          if [[ $BCMATH != "on" ]]; then
-              export PHP_BUILD_CONFIGURE_OPTS="--disable-bcmath";
-              git clone git://github.com/php-build/php-build.git $HOME/.phpenv/plugins/php-build;
-              travis_wait phpenv install 7.2.19;
-              phpenv rehash;
-              phpenv global 7.2.19;
-          fi
-          php -v;
-          php -m;
-    -
-      <<: *STANDARD_TEST_JOB
-      php: 7.2
-      env: BCMATH="off"
+branches:
+  only:
+  - master
+
+# Running builds in parallel for lua 5.2 and 5.3
+env:
+  - LUA=lua5.2
+  - LUA=lua5.3
+
+before_install:
+  - sudo apt-get update
+
+install:
+  - sudo apt-get install ${LUA}
+
+script:
+  - lua ./tests/runall_tests.lua
