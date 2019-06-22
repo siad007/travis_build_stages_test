@@ -1,19 +1,32 @@
-language: c
+rvm: 
+  - 2.4.5
+  - 2.5.4
+  - 2.6.2
 
-branches:
-  only:
-  - master
-
-# Running builds in parallel for lua 5.2 and 5.3
-env:
-  - LUA=lua5.2
-  - LUA=lua5.3
-
-before_install:
-  - sudo apt-get update
-
-install:
-  - sudo apt-get install ${LUA}
-
-script:
-  - lua ./tests/runall_tests.lua
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      language: ruby
+      cache: bundler
+      rvm: 2.4.5
+      script:
+        - ruby -v
+    - os: linux
+      dist: xenial
+      language: ruby
+      cache: bundler
+      rvm: 2.5.4
+      script:
+        - ruby -v
+    - os: linux
+      dist: xenial
+      language: ruby
+      cache: bundler
+      rvm: 2.6.2
+      script:
+        - ruby -v
+    - os: windows
+      language: shell
+      script:
+        - powershell -Command Write-Host Test
