@@ -1,27 +1,3 @@
-matrix:
-  include:
-    - os: linux
-      dist: xenial
-      language: ruby
-      cache: bundler
-      rvm: 2.4.5
-      script:
-        - ruby -v
-    - os: linux
-      dist: xenial
-      language: ruby
-      cache: bundler
-      rvm: 2.5.4
-      script:
-        - ruby -v
-    - os: linux
-      dist: xenial
-      language: ruby
-      cache: bundler
-      rvm: 2.6.2
-      script:
-        - ruby -v
-    - os: windows
-      language: shell
-      script:
-        - powershell -Command Write-Host Test
+language: sh
+before_script:
+  - while travis_wait 50; do echo "=====[ $SECONDS seconds, buildroot still building... ]====="; done
